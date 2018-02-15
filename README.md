@@ -1,14 +1,11 @@
 # groupme-clj
 
-A Clojure library designed to ... well, that part is up to you.
+A Clojure library designed to wrap the [GroupMe API](https://dev.groupme.com/docs/v3). Version 3 is the only supported version of the API.
 
 ## Usage
 
-FIXME
+*Stay tuned for further usage instructions. This library will eventually be hosted on clojars and is under active development.*
 
 ## License
 
-Copyright © 2018 FIXME
-
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
+This is distributed under the MIT License.
