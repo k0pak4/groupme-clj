@@ -12,7 +12,9 @@
 
 (defn get-groups
   "Retrieve the users active groups"
-  [token & {per-page 10}]
+  ([token]
+   (get-groups token 10))
+  ([token per-page]
   (let [request (util/build-request "/groups" token "per_page=" per-page)
         resp (util/make-request request)]
-      (first (util/extract-content resp))))
+    (util/extract-content resp))))

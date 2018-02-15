@@ -12,11 +12,13 @@
 
 (defn make-request
   "Use clj-http to make the desired request."
-  [request & {:keys [params type] :or {params {} type "GET"}}]
-  (case type
-    "GET" (client/get request params)
-    "POST" (client/post request params)
-    "DELETE" (client/delete request params)))
+  ([request]
+   (make-request request "GET"))
+  ([request http-type]
+   (case http-type
+     "GET" (client/get request)
+     "POST" (client/post request)
+     "DELETE" (client/delete request))))
   
 (defn extract-content
   "Extract the content out of the response body"
