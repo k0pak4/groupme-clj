@@ -1,7 +1,5 @@
 (ns groupme-clj.group
-  (:require [clj-http.client :as client]
-            [clojure.data.json :as json]
-            [groupme-clj.util :as util]))
+  (:require [groupme-clj.util :as util]))
 
 (defn get-group-by-id
   "Retrieve a groups information based on its unique identifier"
@@ -18,3 +16,11 @@
   (let [request (util/build-request "/groups" token "per_page=" per-page)
         resp (util/make-request request)]
     (util/extract-content resp))))
+
+(defn get-former-groups
+  "Retrieve the users former groups"
+  [token]
+  (let [request (util/build-request "/groups/former" token)
+        resp (util/make-request request)]
+    (util/extract-content resp)))
+
