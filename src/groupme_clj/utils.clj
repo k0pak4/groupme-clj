@@ -15,9 +15,11 @@
   ([request]
    (make-request request "GET"))
   ([request http-type]
+   (make-request request http-type {}))
+  ([request http-type body]
    (case http-type
      "GET" (client/get request)
-     "POST" (client/post request)
+     "POST" (client/post request {:body (json/write-str body)})
      "DELETE" (client/delete request))))
   
 (defn extract-content
