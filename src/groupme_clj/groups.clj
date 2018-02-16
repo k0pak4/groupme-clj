@@ -1,12 +1,5 @@
-(ns groupme-clj.group
-  (:require [groupme-clj.util :as util]))
-
-(defn get-group-by-id
-  "Retrieve a groups information based on its unique identifier"
-  [token id]
-  (let [request (util/build-request (str "/groups/" id) token)
-        resp (util/make-request request)]
-      (util/extract-content resp)))
+(ns groupme-clj.groups
+  (:require [groupme-clj.utils :as util]))
 
 (defn get-groups
   "Retrieve the users active groups"
@@ -24,3 +17,9 @@
         resp (util/make-request request)]
     (util/extract-content resp)))
 
+(defn get-group-by-id
+  "Retrieve a groups information based on its unique identifier"
+  [token id]
+  (let [request (util/build-request (str "/groups/" id) token)
+        resp (util/make-request request)]
+      (util/extract-content resp)))

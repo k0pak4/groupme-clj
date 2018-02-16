@@ -1,5 +1,5 @@
-(ns groupme-clj.chat
-  (:require [groupme-clj.util :as util]))
+(ns groupme-clj.chats
+  (:require [groupme-clj.utils :as util]))
 
 (defn get-chats
   "Retrieve a user's direct message chats"

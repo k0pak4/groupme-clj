@@ -1,4 +1,4 @@
-(ns groupme-clj.util
+(ns groupme-clj.utils
   (:require [clj-http.client :as client]
             [clojure.data.json :as json]))
 
