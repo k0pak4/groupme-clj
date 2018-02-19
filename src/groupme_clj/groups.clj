@@ -25,9 +25,14 @@
       (util/extract-content resp)))
 
 (defn create-group
-  ""
-  [token]
-  )
+  "Create a group with the given name. Optional arguments include
+  a group description"
+  [token name {:keys [description image-url share]}]
+  (let [request (util/build-request "/groups" token)
+        body {"name" name, "description" description,
+              "image_url" image-url, "share" share}
+        resp (util/make-request request "POST" body)]
+    (util/extract-content resp)))
 
 (defn update-group
   ""
@@ -35,9 +40,12 @@
   )
 
 (defn destroy-group
-  ""
-  [token]
-  )
+  "Destroy the given group by its ID"
+  [token group-id]
+  (let [request (util/build-request (str "/groups/" group-id "/destroy") token)
+        resp (util/make-request request "POST")]
+    (if (= (:status resp) 200)
+      (print (str "Successly deleted group " group-id "!")))))
 
 (defn join-shared-group
   ""
@@ -53,3 +61,4 @@
   ""
   [token]
   )
+
