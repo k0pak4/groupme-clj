@@ -34,10 +34,24 @@
         resp (util/make-request request "POST" body)]
     (util/extract-content resp)))
 
+
+(defn ^:private build-update-body
+  "Build the body of the update-group request"
+  [name description image-url office-mode share]
+  (let [body (if (nil? name) {} {"name" name})
+        body (if (nil? description) body (assoc body "description" description))
+        body (if (nil? image-url) body (assoc body "image_url" image-url))
+        body (if (nil? office-mode) body (assoc body "office_mode" office-mode))
+        body (if (nil? share) body (assoc body "share" share))]
+    body))
+
 (defn update-group
-  ""
-  [token]
-  )
+  "Update fields of the given group"
+  [token group-id {:keys [name description image-url office-mode share]}]
+  (let [request (util/build-request (str "/groups/" group-id "/update") token)
+        body (build-update-body name description image-url office-mode share)
+        resp (util/make-request request "POST" body)]
+    (util/extract-content resp)))
 
 (defn destroy-group
   "Destroy the given group by its ID"
