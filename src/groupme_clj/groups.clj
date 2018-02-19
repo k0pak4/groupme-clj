@@ -49,16 +49,40 @@
 
 (defn join-shared-group
   ""
-  [token]
+  [token group-id share-token]
   )
 
 (defn rejoin-group
   ""
-  [token]
+  [token group-id]
   )
 
 (defn change-group-owners
   ""
-  [token]
+  [token owner-requests]
   )
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;; Membership Functions ;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defn add-members
+  ""
+  [token group-id members]
+  )
+
+(defn get-add-results
+  ""
+  [token group-id results-id]
+  )
+
+(defn remove-member
+  ""
+  [token group-id membership-id]
+  )
+
+(defn update-nickname
+  ""
+  [token group-id nickname]
+  )
