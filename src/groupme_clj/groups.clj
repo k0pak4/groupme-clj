@@ -45,17 +45,25 @@
   (let [request (util/build-request (str "/groups/" group-id "/destroy") token)
         resp (util/make-request request "POST")]
     (if (= (:status resp) 200)
-      (print (str "Successly deleted group " group-id "!")))))
+      (print (str "Successly deleted group " group-id "!")))
+    (:status resp)))
 
 (defn join-shared-group
-  ""
+  "Join a shared group with the requested id and required share token"
   [token group-id share-token]
-  )
+  (let [request (util/build-request (str "/groups/" group-id
+                                         "/join/" share-token)
+                                    token)
+        resp (util/make-request request "POST")]
+    (util/extract-content resp)))
 
 (defn rejoin-group
-  ""
+  "Rejoin a group that you previously removed yourself from"
   [token group-id]
-  )
+    (let [request (util/build-request "/groups/join" token)
+        body {"group_id" group-id}
+        resp (util/make-request request "POST" body)]
+    (util/extract-content resp)))
 
 (defn change-group-owners
   ""
