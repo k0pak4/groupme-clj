@@ -93,21 +93,40 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defn add-members
-  ""
+  "Add the supplied members to the given group.
+  member objects must be of the form [{'nickname': '', ...} ...]"
   [token group-id members]
-  )
+  (let [request (util/build-request (str "/groups/" group-id "/members/add")
+                                    token)
+        body {"members" members}
+        resp (util/make-request request "POST" body)]
+    (util/extract-content resp)))
 
 (defn get-add-results
-  ""
+  "Retrieve the results of the previous add operation by result-id"
   [token group-id results-id]
-  )
+  (let [request (util/build-request
+                 (str "/groups/" group-id "/members/results/" results-id)
+                 token)
+        resp (util/make-request request "GET")]
+    (util/extract-content resp)))
 
 (defn remove-member
-  ""
+  "Remove a member from the given group. The membership id is not the user id, but specific to the group"
   [token group-id membership-id]
-  )
+  (let [request (util/build-request
+                 (str "/groups/" group-id "/members/" membership-id "/remove")
+                 token)
+        resp (util/make-request request "POST")]
+        (if (= (:status resp) 200)
+      (print (str "Successly removed member from group " group-id "!")))
+    (:status resp)))
 
 (defn update-nickname
-  ""
+  "Change your nickname in the given group. Must be between 1-50 characters"
   [token group-id nickname]
-  )
+  (let [request (util/build-request (str "/groups/" group-id "/memberships/update")
+                                    token)
+        body {"membership" {"nickname" nickname}}
+        resp (util/make-request request "POST" body)]
+    (util/extract-content resp)))
