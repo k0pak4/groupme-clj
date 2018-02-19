@@ -23,3 +23,33 @@
   (let [request (util/build-request (str "/groups/" id) token)
         resp (util/make-request request)]
       (util/extract-content resp)))
+
+(defn create-group
+  ""
+  [token]
+  )
+
+(defn update-group
+  ""
+  [token]
+  )
+
+(defn destroy-group
+  ""
+  [token]
+  )
+
+(defn join-shared-group
+  ""
+  [token]
+  )
+
+(defn rejoin-group
+  ""
+  [token]
+  )
+
+(defn change-group-owners
+  ""
+  [token]
+  )
