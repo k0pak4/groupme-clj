@@ -66,10 +66,13 @@
     (util/extract-content resp)))
 
 (defn change-group-owners
-  ""
+  "Submit requests to change group owners of groups.
+  Requests must be in format: [{'group_id': 12345, 'owner_id': 67890} ...]"
   [token owner-requests]
-  )
-
+  (let [request (util/build-request "/groups/change_owners" token)
+        body {"requests" owner-requests}
+        resp (util/make-request request "POST" body)]
+    (util/extract-content resp)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;; Membership Functions ;;;;;;;;;;;;;;;;;;;;
