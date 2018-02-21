@@ -28,13 +28,13 @@
          resp (util/make-request request)]
      (util/extract-content resp))))
 
-;; THIS ENDPOINT IS CURRENTLY DOWN ON GROUPME's API
 (defn- create-direct-message
   "Create a direct message to another user.
   Attachments are currently unsupported."
-  [token other-user source-guid text]
+  [token other-user text]
   (let [request (util/build-request "/direct_messages" token)
-        body {"direct_message" {"recipient_id" other-user "source_guid" source-guid,
-              "text" text}}
+        body {"direct_message" {"recipient_id" other-user
+                                "source_guid" (str (System/currentTimeMillis)),
+                                "text" text}}
         resp (util/make-request request "POST" body)]
     (util/extract-content resp)))
