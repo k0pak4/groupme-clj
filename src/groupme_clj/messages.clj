@@ -45,3 +45,31 @@
     (if (= (:status resp) 200)
       (print (str "Successly unliked message!")))
     (:status resp)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;; Leaderboard Functions  ;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defn get-most-liked-messages
+  "Get a list of the most liked messages in the group over the given period"
+  [token group-id period]
+  (let [request (util/build-request (str "/groups/" group-id "/likes")
+                                    token "period=" period)
+        resp (util/make-request request)]
+    (util/extract-content resp)))
+
+(defn get-my-likes
+  "Get a list of messags I have liked in the given group"
+  [token group-id]
+  (let [request (util/build-request (str "/groups/" group-id "/likes/mine")
+                                    token)
+        resp (util/make-request request)]
+    (util/extract-content resp)))
+
+(defn get-my-liked-messages
+  "Get a list of my messages others have liked in the given group"
+  [token group-id]
+  (let [request (util/build-request (str "/groups/" group-id "/likes/for_me")
+                                    token)
+        resp (util/make-request request)]
+    (util/extract-content resp)))
