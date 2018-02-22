@@ -19,7 +19,8 @@
   ([request http-type body]
    (case http-type
      "GET" (client/get request)
-     "POST" (client/post request {:body (json/write-str body)})
+     "POST" (client/post request {:body (json/write-str body)
+                                  :content-type :json})
      "DELETE" (client/delete request))))
   
 (defn extract-content

@@ -23,8 +23,9 @@ Feel free to fork the library and submit a pull request, but please follow the b
 
 ## Areas of Improvement
 
-This library can see enhancements in two areas:
-1. A more complete coverage of the API.
-2. Testing.
-
-Feel free to add to either of these and send through a PR!
+- Bot API coverage
+- Block API coverage
+- Increased documentation in the UsageGuide
+- Testing of existing API functionality
+- Tutorials or an introduction to library usage
+- Advanced statistics of groups, direct messages, etc.
