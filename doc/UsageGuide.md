@@ -46,3 +46,9 @@ The following API Endpoints and functions are currently supported.
 * get-most-liked-messages  --  Retrieve most liked messages in the specified group
 * get-my-likes  --  Retrieves messages you have liked in the specified group
 * get-my-liked-messages  --  Retrieves messages of yours that others have liked in the specified group
+
+## Bots
+* get-bots  --  Retrieves the user's bots
+* create-bot  --  Creates a new bot with the given name in the given group with additional options
+* bot-message  --  Send a message as the specified bot with the specified text
+* destroy-bot  --  Delete the specified bot
