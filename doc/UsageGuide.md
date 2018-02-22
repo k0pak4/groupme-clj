@@ -35,3 +35,14 @@ The following API Endpoints and functions are currently supported.
 ## Chats
 
 * get-chats  -- Retrieves the authenticated user's direct message chats.
+* get-direct-messages  --  Retrieves direct messages between two users.
+* create-direct-message  --  Create a direct message to another user
+
+## Messages
+* get-messages  --  Retrieves messages in the specified group
+* create-message  --   Creates a message in the specified group
+* like-message  --  Like the specified message
+* unlike-message  --  Unlike the specifiec message
+* get-most-liked-messages  --  Retrieve most liked messages in the specified group
+* get-my-likes  --  Retrieves messages you have liked in the specified group
+* get-my-liked-messages  --  Retrieves messages of yours that others have liked in the specified group

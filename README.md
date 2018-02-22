@@ -1,5 +1,5 @@
 # groupme-clj
-
+[![Clojars Project](https://img.shields.io/clojars/v/groupme-clj.svg)](https://clojars.org/groupme-clj)
 A Clojure library designed to wrap the [GroupMe API](https://dev.groupme.com/docs/v3). Version 3 is the only version of the API this library supports.
 
 ## Usage
@@ -14,7 +14,7 @@ To see in depth documentation of covered functions, api endpoints, and more, che
     
 ## Changelog
 
-To see in depth changes of added features, fixed bugs, and more, check out [the Changelog](https://github.com/dunn-mat/groupme-clj/blob/master/CHANGELOG.md)
+To see by version changes of added features, fixed bugs, and more, check out [the Changelog](https://github.com/dunn-mat/groupme-clj/blob/master/CHANGELOG.md)
 
 ## Contributing
 
