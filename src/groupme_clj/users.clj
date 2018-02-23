@@ -47,3 +47,42 @@
         resp (util/make-request request "POST")]
     (if (= (:status resp) 200)
       (print "Successly disabled SMS Mode!"))))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;  Blocks  ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defn get-blocks
+  "Get a list of contacts you have blocked"
+  [token user-id]
+  (let [request (util/build-request "/blocks" token "user=" user-id)
+        resp (util/make-request request)]
+    (get (util/extract-content resp) "blocks")))
+
+(defn does-block-exist
+  "Check if a block exists between you and another user"
+  [token user-id other-user]
+  (let [request (util/build-request "/blocks/between" token "user="
+                                    user-id "otherUser=" other-user)
+        resp (util/make-request request)]
+    (get (util/extract-content resp) "between")))
+
+(defn create-block
+  "Create a block between you and another user"
+  [token user-id other-user]
+  (let [request (util/build-request "/blocks" token "user="
+                                    user-id "otherUser=" other-user)
+        resp (util/make-request request "POST")]
+    (if (= (:status resp) 201)
+      (print (str "Successly created block on user " other-user "!")))
+    (:status resp)))
+
+(defn delete-block
+  "Destroy a block between you and another user"
+  [token user-id other-user]
+  (let [request (util/build-request "/blocks" token "user="
+                                    user-id "otherUser=" other-user)
+        resp (util/make-request request "DELETE")]
+    (if (= (:status resp) 200)
+      (print (str "Successly deleted block on user " other-user "!")))
+    (:status resp)))
