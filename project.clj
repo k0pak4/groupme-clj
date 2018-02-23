@@ -1,4 +1,4 @@
-(defproject groupme-clj "0.2.0"
+(defproject groupme-clj "0.3.0"
   :description "A Clojure Library to wrap the GroupMe API."
   :url "https://github.com/dunn-mat/groupme-clj"
   :license {:name "MIT License"
