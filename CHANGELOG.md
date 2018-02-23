@@ -1,6 +1,18 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
+## v0.3.0
+- Adds API support for the following **bots** functions:
+  - Get a user's bots
+  - Create a bot for a specific group
+  - Send a message from a specific bot
+  - Destroy a specific bot
+- Adds API support for the following **blocks** functions:
+  - Get a user's blocks
+  - Check if a block exists between you and another user
+  - Create a block between you and another user
+  - Destroy a block between you and another user
+
 ## v0.2.0
 - Adds changelog to document changes across versions
 - Increases README documentation
@@ -17,8 +29,8 @@ All notable changes to this project will be documented in this file. This change
   - Retrieve the most liked messages in a specific group
   - Retrieve the messages you have liked in a specific group
   - Retrieve your messages which other people have liked in a specific group
-  
-## v0.1.0	
+
+## v0.1.0
 - Initial release
 - Adds API support for the following **group** functions:
   - Retrieving groups

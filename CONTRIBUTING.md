@@ -23,8 +23,7 @@ Feel free to fork the library and submit a pull request, but please follow the b
 
 ## Areas of Improvement
 
-- Bot API coverage
-- Block API coverage
+- Image Service capabilities
 - Increased documentation in the UsageGuide
 - Testing of existing API functionality
 - Tutorials or an introduction to library usage

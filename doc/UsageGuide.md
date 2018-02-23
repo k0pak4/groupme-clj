@@ -11,6 +11,12 @@ The following API Endpoints and functions are currently supported.
 * update-user  --  Update the authenticated user with options in a map `{:name "", :email "", :email "", :zipcode ""}`
 * enable-sms-mode  --  Enable SMS mode for the user for 1-48 hours
 * disable-sms-mode --  Disable SMS mode for the user
+
+### Blocks
+* get-blocks  --  Retrieves all blocks for the given user
+* does-block-exist  --  Checks whether a block exists between the two given users
+* create-block  --  Creates a block between you and the given user
+* destroy-block  -- Destroys a block between you and the given user
     
 ## Groups
 
