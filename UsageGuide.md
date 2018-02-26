@@ -1,22 +1,91 @@
 # groupme-clj Usage Guide
 
+## Table of Contents
+1. [Getting Started](#getting-started)
+2. [Users](#users)
+   - [Blocks](#blocks)
+3. [Groups](#groups)
+   - [Membership](#membership)
+4. [Chats](#chats)
+5. [Messages](#messages)
+6. [Bots](#bots)
+
+## Getting Started
 The library is designed to mirror options presented by the [GroupMe API](https://dev.groupme.com/docs/v3).
 
-All functions require you to pass a string representation of your auth token from the GroupMe API.
+__All functions__ require you to pass a string representation of your auth token from the GroupMe API, like so:
+
+`(def auth-token "123456789101112131415")`
     
 The following API Endpoints and functions are currently supported.
 
 ## Users
-* get-current-user  -- Retrieves the authenticated user
-* update-user  --  Update the authenticated user with options in a map `{:name "", :email "", :email "", :zipcode ""}`
-* enable-sms-mode  --  Enable SMS mode for the user for 1-48 hours
-* disable-sms-mode --  Disable SMS mode for the user
+#### get-current-user  
+Retrieves the authenticated user   
+__Parameters:__  
+* token: your authentication token
+
+__Returns:__ a map of the user's details
+
+#### update-user
+Update the authenticated user   
+__Parameters:__  
+* token: your authentication token
+* _Optional_ a map with any of the following: `{:av-url "", :name "", :email "", :zipcode ""}`  
+  
+__Returns:__ a map of the user's details
+
+#### enable-sms-mode
+Enable SMS mode for the user for 1-48 hours
+__Parameters:__  
+* token: your authentication token
+* duration: a number between 1 and 48 hours specifying how long to enable sms mode for   
+  
+__Returns:__ The status code of the response, 201 indicates success
+
+#### disable-sms-mode
+Disable SMS mode for the user
+__Parameters:__  
+* token: your authentication token
+* duration: a number between 1 and 48 hours specifying how long to enable sms mode for   
+  
+__Returns:__ The status code of the response, 200 indicates success
 
 ### Blocks
-* get-blocks  --  Retrieves all blocks for the given user
-* does-block-exist  --  Checks whether a block exists between the two given users
-* create-block  --  Creates a block between you and the given user
-* destroy-block  -- Destroys a block between you and the given user
+#### get-blocks
+Retrieves all blocks for the given user  
+__Parameters:__  
+* token: your authentication token
+* user-id: your user id  
+
+__Returns:__ a list of blocks you have with other users
+
+#### does-block-exist
+Checks whether a block exists between the two given users
+__Parameters:__  
+* token: your authentication token
+* user-id: your user id
+* other-user: the other user's id  
+
+__Returns:__ a boolean `true` or `false` on whether a block is present
+
+#### create-block
+Creates a block between you and the given user
+__Parameters:__  
+* token: your authentication token
+* user-id: your user id
+* other-user: the other user's id  
+
+__Returns:__ The status code of the response, 201 indicates success
+
+#### destroy-block
+Destroys a block between you and the given user
+__Parameters:__  
+* token: your authentication token
+* user-id: your user id
+* other-user: the other user's id  
+
+__Returns:__ The status code of the response, 200 indicates success
     
 ## Groups
 

@@ -1,6 +1,11 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
+## v1.0.0 (Breaking Changes)
+- UsageGuide Overhaul
+- Adds API support for the __image service__
+- SMS Mode functions now return	their response codes
+	
 ## v0.3.0
 - Adds API support for the following **bots** functions:
   - Get a user's bots
