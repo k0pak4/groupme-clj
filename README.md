@@ -8,10 +8,10 @@ A Clojure library designed to wrap the [GroupMe API](https://dev.groupme.com/doc
 This library is hosted on clojars. If you are using Leiningen, add this to your `project.clj`:
 
 ```clj
-[groupme-clj "0.3.0"]
+[groupme-clj "1.0.0"]
 ```
 
-To see in depth documentation of covered functions, api endpoints, and more, check out [the Usage Guide](https://github.com/dunn-mat/groupme-clj/blob/master/doc/UsageGuide.md)
+To see in depth documentation of covered functions, api endpoints, and more, check out [the Usage Guide](https://github.com/dunn-mat/groupme-clj/blob/master/UsageGuide.md)
     
 ## Changelog
 
