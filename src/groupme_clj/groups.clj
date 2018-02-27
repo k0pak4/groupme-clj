@@ -6,9 +6,11 @@
   ([token]
    (get-groups token 10))
   ([token per-page]
-  (let [request (util/build-request "/groups" token "per_page=" per-page)
-        resp (util/make-request request)]
-    (util/extract-content resp))))
+   (get-groups token per-page 1))
+  ([token per-page page]
+   (let [request (util/build-request "/groups" token "per_page=" per-page)
+         resp (util/make-request request)]
+     (util/extract-content resp))))
 
 (defn get-former-groups
   "Retrieve the users former groups"
@@ -86,7 +88,7 @@
   (let [request (util/build-request "/groups/change_owners" token)
         body {"requests" owner-requests}
         resp (util/make-request request "POST" body)]
-    (util/extract-content resp)))
+    (get (util/extract-content resp) "results")))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;; Membership Functions ;;;;;;;;;;;;;;;;;;;;

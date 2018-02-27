@@ -90,15 +90,89 @@ __Returns:__ The status code of the response, 200 indicates success
     
 ## Groups
 
-* get-groups  --  Get the authenticated user's groups
-* get-former-groups  --  Get the authenticated user's former groups
-* get-group-by-id  --  Get a group by its id
-* create-group  --  Create a group with given name and optional arguments
-* update-group  --  Update a group by its id with given updates
-* destroy-group  --  Destroy a group based on its id
-* join-shared-group  --  Join a group you are permitted to join
-* rejoin-group   --  Rejoin a group you previously left
-* change-group-owners  --  adjust ownership of various groups
+### get-groups
+Get the authenticated user's groups  
+
+__Parameters:__  
+* token: your authentication token
+* _Optional_ per-page: the amount of results to return in a single request (defaults to 10)
+* _Optional_ page: the page number of results (defaults to 1)  
+
+__Returns:__ A list of groups you are currently in
+
+### get-former-groups
+Get the authenticated user's former groups  
+
+__Parameters:__  
+* token: your authentication token  
+
+__Returns:__ A list of groups you were formerly in
+
+### get-group-by-id
+Get a group by its id  
+
+__Parameters:__  
+* token: your authentication token
+* id: the id of the group you are retrieving  
+
+__Returns:__ The retrieved group
+
+### create-group
+Create a group with given name and optional arguments  
+
+__Parameters:__  
+* token: your authentication token
+* name: the name of the group
+* _Optional_ a map with any of the following: `{:description "", :image-url "", :share ""}`  
+
+__Returns:__ The created group  
+
+### update-group
+Update a group by its id with given updates  
+
+__Parameters:__  
+* token: your authentication token
+* group-id: the id of the group to update
+* _Optional_ a map with any of the following: `{:description "", :name "", :image-url "", :office-mode false, :share true}`  
+
+__Returns:__ the updated group
+
+### destroy-group
+Destroy a group based on its id  
+
+__Parameters:__  
+* token: your authentication token
+* group-id: the group you wish to destroy
+
+__Returns:__ the status code of the response, 200 indicates success
+
+### join-shared-group 
+Join a group you are permitted to join  
+
+__Parameters:__  
+* token: your authentication token
+* group-id: the id of the group you are trying to join
+* share-token: the share url of the group you are trying to join  
+
+__Returns:__ the group you joined
+
+### rejoin-group 
+Rejoin a group you previously left  
+
+__Parameters:__  
+* token: your authentication token
+* group-id: the id of the group you are trying to rejoin  
+
+__Returns:__ the group you rejoined
+
+### change-group-owners
+adjust ownership of various groups  
+
+__Parameters:__  
+* token: your authentication token
+* owner-requests: a list in the format `[{'group_id': 12345, 'owner_id': 67890} ...]`  
+
+__Returns:__ A list of results for each request sent
 
 ### Membership functions
 
