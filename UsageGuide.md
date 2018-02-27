@@ -174,13 +174,47 @@ __Parameters:__
 
 __Returns:__ A list of results for each request sent
 
-### Membership functions
+## Membership functions
 
-* add-members  --  add members to the given group
-* get-add-results  --  see the results of your previous add request
-* remove-member  --  remove the specified member from the given group
-* update-nickname  --  update your nickname in the specified group
+### add-members
+add members to the given group  
 
+__Parameters:__  
+* token: your authentication token
+* group-id: the id of the group to add members too
+* members: a list of members in the form [{'nickname': "", 'user_id': "", ...} ...]  
+
+__Returns:__ a results id for the add request
+
+### get-add-results
+see the results of your previous add request  
+
+__Parameters:__  
+* token: your authentication token
+* group-id: the group for which results you are checking
+* results-id: the id of the results you are checking  
+
+__Returns:__ the results for each add request
+
+### remove-member
+remove the specified member from the given group  
+
+__Parameters:__  
+* token: your authentication token
+* group-id: the id of the group you are removing the member from
+* membership-id: the membership id(not user id) of the user you are removing  
+
+__Returns:__ the result status code, 200 indicates success
+
+### update-nickname
+update your nickname in the specified group  
+
+__Parameters:__  
+* token: your authentication token
+* group-id: the id of the group you are changing your nickname in
+* nickname: the nickname you want to change to  
+
+__Returns:__ the updated membership and nickname
         
 ## Chats
 

@@ -24,7 +24,7 @@
   [token id]
   (let [request (util/build-request (str "/groups/" id) token)
         resp (util/make-request request)]
-      (util/extract-content resp)))
+    (util/extract-content resp)))
 
 (defn create-group
   "Create a group with the given name. Optional arguments include
@@ -76,7 +76,7 @@
 (defn rejoin-group
   "Rejoin a group that you previously removed yourself from"
   [token group-id]
-    (let [request (util/build-request "/groups/join" token)
+  (let [request (util/build-request "/groups/join" token)
         body {"group_id" group-id}
         resp (util/make-request request "POST" body)]
     (util/extract-content resp)))
@@ -120,7 +120,7 @@
                  (str "/groups/" group-id "/members/" membership-id "/remove")
                  token)
         resp (util/make-request request "POST")]
-        (if (= (:status resp) 200)
+    (if (= (:status resp) 200)
       (print (str "Successly removed member from group " group-id "!")))
     (:status resp)))
 
