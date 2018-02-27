@@ -123,7 +123,37 @@ __Returns:__ The status code of the response, 200 indicates success
 * get-my-liked-messages  --  Retrieves messages of yours that others have liked in the specified group
 
 ## Bots
-* get-bots  --  Retrieves the user's bots
-* create-bot  --  Creates a new bot with the given name in the given group with additional options
-* bot-message  --  Send a message as the specified bot with the specified text
-* destroy-bot  --  Delete the specified bot
+### get-bots
+Retrieves the user's bots  
+__Parameters:__  
+* token: your authentication token  
+
+__Returns:__ A list of bots the user has created
+
+### create-bot
+Creates a new bot with the given name in the given group with additional options  
+__Parameters:__  
+* token: your authentication token
+* name: the name of the bot
+* group-id: the id of the group the bot will be created in
+* _Optional_ a map with any of the following keys `{:avatar-url "", :callback-url "", :dm-notification ""}`  
+
+__Returns:__ The created bot in a map
+
+### bot-message
+Send a message as the specified bot with the specified text  
+__Parameters:__  
+* token: your authentication token
+* bot-id: the id of the bot sending the message
+* text: the text of the message
+* _Optional_ picture-url: A GroupMe image service url that will be attached to the message  
+
+__Returns:__ the status code of the response, 202 indicates success
+
+### destroy-bot
+Delete the specified bot  
+__Parameters:__  
+* token: your authentication token
+* bot-id: the id of the bot to be destroyed  
+
+__Returns:__ The status code of the response, 200 indicates success
