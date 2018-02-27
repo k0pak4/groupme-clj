@@ -20,14 +20,14 @@ __All functions__ require you to pass a string representation of your auth token
 The following API Endpoints and functions are currently supported.
 
 ## Users
-#### get-current-user  
+### get-current-user  
 Retrieves the authenticated user   
 __Parameters:__  
 * token: your authentication token
 
 __Returns:__ a map of the user's details
 
-#### update-user
+### update-user
 Update the authenticated user   
 __Parameters:__  
 * token: your authentication token
@@ -35,24 +35,24 @@ __Parameters:__
   
 __Returns:__ a map of the user's details
 
-#### enable-sms-mode
-Enable SMS mode for the user for 1-48 hours
+### enable-sms-mode
+Enable SMS mode for the user for 1-48 hours  
 __Parameters:__  
 * token: your authentication token
 * duration: a number between 1 and 48 hours specifying how long to enable sms mode for   
   
 __Returns:__ The status code of the response, 201 indicates success
 
-#### disable-sms-mode
-Disable SMS mode for the user
+### disable-sms-mode
+Disable SMS mode for the user  
 __Parameters:__  
 * token: your authentication token
 * duration: a number between 1 and 48 hours specifying how long to enable sms mode for   
   
 __Returns:__ The status code of the response, 200 indicates success
 
-### Blocks
-#### get-blocks
+## Blocks
+### get-blocks
 Retrieves all blocks for the given user  
 __Parameters:__  
 * token: your authentication token
@@ -60,8 +60,8 @@ __Parameters:__
 
 __Returns:__ a list of blocks you have with other users
 
-#### does-block-exist
-Checks whether a block exists between the two given users
+### does-block-exist
+Checks whether a block exists between the two given users  
 __Parameters:__  
 * token: your authentication token
 * user-id: your user id
@@ -69,8 +69,8 @@ __Parameters:__
 
 __Returns:__ a boolean `true` or `false` on whether a block is present
 
-#### create-block
-Creates a block between you and the given user
+### create-block
+Creates a block between you and the given user  
 __Parameters:__  
 * token: your authentication token
 * user-id: your user id
@@ -78,8 +78,8 @@ __Parameters:__
 
 __Returns:__ The status code of the response, 201 indicates success
 
-#### destroy-block
-Destroys a block between you and the given user
+### destroy-block
+Destroys a block between you and the given user  
 __Parameters:__  
 * token: your authentication token
 * user-id: your user id
