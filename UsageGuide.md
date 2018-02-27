@@ -9,6 +9,7 @@
 4. [Chats](#chats)
 5. [Messages](#messages)
 6. [Bots](#bots)
+7. [Image Service](#image-service)
 
 ## Getting Started
 The library is designed to mirror options presented by the [GroupMe API](https://dev.groupme.com/docs/v3).
@@ -157,3 +158,16 @@ __Parameters:__
 * bot-id: the id of the bot to be destroyed  
 
 __Returns:__ The status code of the response, 200 indicates success
+
+
+## Image Service
+
+### upload-image
+Upload an image to the GroupMe image service, which allows the image to be sent in messages, etc.  
+
+__Parameters:__  
+* token: your authentication token
+* image-path: path to the image file on the machine
+* content-type: a string of the type of file, e.g. "image/png"  
+
+__Returns:__ The image service url to be used in messages or avatars
