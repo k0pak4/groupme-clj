@@ -56,7 +56,7 @@
   (let [request (util/build-request (str "/groups/" group-id "/likes")
                                     token "period=" period)
         resp (util/make-request request)]
-    (util/extract-content resp)))
+    (get (util/extract-content resp) "messages")))
 
 (defn get-my-likes
   "Get a list of messags I have liked in the given group"
@@ -64,7 +64,7 @@
   (let [request (util/build-request (str "/groups/" group-id "/likes/mine")
                                     token)
         resp (util/make-request request)]
-    (util/extract-content resp)))
+    (get (util/extract-content resp) "messages")))
 
 (defn get-my-liked-messages
   "Get a list of my messages others have liked in the given group"
@@ -72,4 +72,4 @@
   (let [request (util/build-request (str "/groups/" group-id "/likes/for_me")
                                     token)
         resp (util/make-request request)]
-    (util/extract-content resp)))
+    (get (util/extract-content resp) "messages")))

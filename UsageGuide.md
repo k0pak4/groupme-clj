@@ -253,11 +253,54 @@ __Returns:__ The created message
 ## Messages
 * get-messages  --  Retrieves messages in the specified group
 * create-message  --   Creates a message in the specified group
-* like-message  --  Like the specified message
-* unlike-message  --  Unlike the specifiec message
-* get-most-liked-messages  --  Retrieve most liked messages in the specified group
-* get-my-likes  --  Retrieves messages you have liked in the specified group
-* get-my-liked-messages  --  Retrieves messages of yours that others have liked in the specified group
+
+### like-message
+Like the specified message  
+
+__Parameters:__  
+* token: your authentication token
+* conversation-id: the id of the conversation (group-id or "your-user"+"other-user")
+* message-id: the id of the message to like  
+
+__Returns:__ the status code of the response, 200 indicates success
+
+### unlike-message
+Unlike the specifiec message  
+
+__Parameters:__  
+* token: your authentication token
+* conversation-id: the id of the conversation (group-id or "your-user"+"other-user")
+* message-id: the id of the message to unlike  
+
+__Returns:__ the status code of the response, 200 indicates success
+
+### get-most-liked-messages
+Retrieve most liked messages in the specified group  
+
+__Parameters:__  
+* token: your authentication token
+* group-id: the id of the group you want liked messages for
+* period: the time period ("day", "week", "month)  
+
+__Returns:__ a list of the most liked messages
+
+### get-my-likes
+Retrieves messages you have liked in the specified group  
+
+__Parameters:__  
+* token: your authentication token
+* group-id: the id of the group you want your liked messages from  
+
+__Returns:__ a list of messages that you have liked
+
+### get-my-liked-messages
+Retrieves messages of yours that others have liked in the specified group  
+
+__Parameters:__  
+* token: your authentication token
+* group-id: the id of the group you want messages others have liked from  
+
+__Returns:__ a list of the messages others have liked
 
 ## Bots
 ### get-bots
