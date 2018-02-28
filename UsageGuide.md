@@ -218,9 +218,37 @@ __Returns:__ the updated membership and nickname
         
 ## Chats
 
-* get-chats  -- Retrieves the authenticated user's direct message chats.
-* get-direct-messages  --  Retrieves direct messages between two users.
-* create-direct-message  --  Create a direct message to another user
+### get-chats
+Retrieves the authenticated user's direct message chats.  
+
+__Parameters:__  
+* token: your authentication token
+* _Optional_ per-page: the amount of results to return in a single request (defaults to 10)
+* _Optional_ page: the page number of results (defaults to 1)  
+
+__Returns:__ A list of direct message chats you are currently in
+
+### get-direct-messages
+Retrieves direct messages between two users.  
+
+__Parameters:__  
+* token: your authentication token
+* other-user: the id of the user you are checking direct messages with
+* _Optional_ message-id: the index of which message to start getting results at
+* _Optional_ before?: Do you want messages before the id? If false, does messages since id  
+
+__Returns:__ A list of direct messages between you and other-user
+
+### create-direct-message
+Create a direct message to another user  
+
+__Parameters:__  
+* token: your authentication token
+* other-user: the id of the user you are sending a direct message to
+* text: the text of the message 
+* _Optional_ attachments: A list of maps, where each map is an attachment. See the [GroupMe API](https://dev.groupme.com/docs/v3#direct_messages_create) for how to format each type of attachment  
+
+__Returns:__ The created message
 
 ## Messages
 * get-messages  --  Retrieves messages in the specified group
