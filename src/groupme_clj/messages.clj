@@ -7,18 +7,31 @@
 
 (defn get-messages
   "Retrieves messages in the given group"
-  [token group-id]
-  (let [request (util/build-request (str "/groups/" group-id "/messages") token)
-        resp (util/make-request request)]
-    (util/extract-content resp)))
+  ([token group-id]
+   (let [request (util/build-request (str "/groups/" group-id "/messages") token)
+         resp (util/make-request request)]
+     (util/extract-content resp)))
+  ([token group-id message-id before?]
+   (get-messages group-id message-id before? 20))
+  ([token group-id message-id before? limit]
+   (let [time-str (if before? "before_id=" "since_id=")
+         request (util/build-request (str "/groups/" group-id "/messages")
+                                     token
+                                     time-str message-id)
+         resp (util/make-request request)]
+     (util/extract-content resp))))
 
 (defn create-message
   "create a message within the given group with the provided text"
-  [token group-id text]
-  (let [request (util/build-request (str "/groups/" group-id "/messages") token)
-        body {"message" {"text" text, "source_guid" (str (System/currentTimeMillis))}}
+  ([token group-id text]
+   (create-message token group-id text []))
+  ([token group-id text attachments]
+   (let [request (util/build-request (str "/groups/" group-id "/messages") token)
+         body {"message" {"text" text,
+                          "source_guid" (str (System/currentTimeMillis)),
+                          "attachments" attachments}}
         resp (util/make-request request "POST" body)]
-    (util/extract-content resp)))
+    (util/extract-content resp))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;; Likes ;;;;;;;;;;;;;;;;;;;;;;;

@@ -251,8 +251,28 @@ __Parameters:__
 __Returns:__ The created message
 
 ## Messages
-* get-messages  --  Retrieves messages in the specified group
-* create-message  --   Creates a message in the specified group
+### get-messages
+Retrieves messages in the specified group  
+
+__Parameters:__  
+* token: your authentication token
+* group-id: the group you want to retrieve messages from
+* _Optional_ message-id: the id of the message to like
+* _Optional_ before?: do you want messages before this id?
+* _Optional_ limit: amount of messages to receive, default 20, max 100  
+
+__Returns:__ a map with {"count": ###, "messsages" []}
+
+### create-message
+Creates a message in the specified group  
+
+__Parameters:__  
+* token: your authentication token
+* group-id: the id of the group you are sending a message too
+* text: the text of the message 
+* _Optional_ attachments: A list of maps, where each map is an attachment. See the [GroupMe API](https://dev.groupme.com/docs/v3#messages_create) for how to format each type of attachment  
+
+__Returns:__ The created message
 
 ### like-message
 Like the specified message  
