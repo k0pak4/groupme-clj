@@ -10,6 +10,16 @@
   (let [params (apply concat (interpose ["&"] (partition 2 more)))]
   (str base-url target "?token=" token "&" (apply str params))))
 
+(defn make-image-request
+  "sends an image to GroupMe image service"
+  [token image content-type]
+  (-> (client/post "https://image.groupme.com/pictures"
+                   {:headers {"X-Access-Token" token
+                              "Content-Type" content-type}
+                    :body (clojure.java.io/file image)})
+      :body
+      json/read-str))
+
 (defn make-request
   "Use clj-http to make the desired request."
   ([request]

@@ -31,10 +31,13 @@
 (defn- create-direct-message
   "Create a direct message to another user.
   Attachments are currently unsupported."
-  [token other-user text]
-  (let [request (util/build-request "/direct_messages" token)
-        body {"direct_message" {"recipient_id" other-user
-                                "source_guid" (str (System/currentTimeMillis)),
-                                "text" text}}
-        resp (util/make-request request "POST" body)]
-    (util/extract-content resp)))
+  ([token other-user text]
+   (create-direct-message token other-user text []))
+  ([token other-user text attachments]
+   (let [request (util/build-request "/direct_messages" token)
+         body {"direct_message" {"recipient_id" other-user
+                                 "source_guid" (str (System/currentTimeMillis)),
+                                 "text" text,
+                                 "attachments" attachments}}
+         resp (util/make-request request "POST" body)]
+    (util/extract-content resp))))

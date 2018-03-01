@@ -19,11 +19,13 @@
 
 (defn update-user
   "Updates information about the authenticated user"
-  [token {:keys [av-url name email zipcode]}]
-  (let [request (util/build-request "/users/update" token)
-        body (build-body av-url name email zipcode)
-        resp (util/make-request request "POST" body)]
-    (util/extract-content resp))) 
+  ([token]
+   (update-user token {}))
+  ([token {:keys [av-url name email zipcode]}]
+   (let [request (util/build-request "/users/update" token)
+         body (build-body av-url name email zipcode)
+         resp (util/make-request request "POST" body)]
+     (util/extract-content resp))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;; SMS Mode ;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -38,7 +40,8 @@
         body {"duration" duration}
         resp (util/make-request request "POST" body)]
     (if (= (:status resp) 201)
-      (print "Successly enabled SMS Mode!"))))
+      (print "Successly enabled SMS Mode!"))
+    (:status resp)))
 
 (defn disable-sms-mode
   "Disable SMS mode for the authenticated user"
@@ -46,7 +49,8 @@
   (let [request (util/build-request "/users/sms_mode/delete" token)
         resp (util/make-request request "POST")]
     (if (= (:status resp) 200)
-      (print "Successly disabled SMS Mode!"))))
+      (print "Successly disabled SMS Mode!"))
+    (:status resp)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;  Blocks  ;;;;;;;;;;;;;;;;;;;;;;;;;;;

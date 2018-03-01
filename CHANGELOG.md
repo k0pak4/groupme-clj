@@ -1,6 +1,17 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
+## v1.0.0 (not fully backwards compatible)
+- UsageGuide Overhaul
+- Adds API support for the __image service__
+- SMS Mode functions now return	their response codes
+- Adds attachments support for __group messages__
+- Adds attachments support for __direct messages__
+- Adds attachments support for __bot messsages__
+- Adds indexing support for __group messages__
+- Adds indexing support for __direct messages__
+- Leaderboard functions properly return list of messages
+
 ## v0.3.0
 - Adds API support for the following **bots** functions:
   - Get a user's bots

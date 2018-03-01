@@ -25,13 +25,20 @@
 (defn bot-message
   "Have the specificied bot send a message to its group.
   Picture messages are currently unsupported."
-  [token bot-id text]
-  (let [request (util/build-request "/bots/post" token)
-        body {"text" text, "bot_id" bot-id}
-        resp (util/make-request request "POST" body)]
-    (if (= (:status resp) 202)
-      (print (str "Successly sent message from bot " bot-id "!")))
-    (:status resp)))
+  ([token bot-id text]
+   (let [request (util/build-request "/bots/post" token)
+         body {"text" text, "bot_id" bot-id}
+         resp (util/make-request request "POST" body)]
+     (if (= (:status resp) 202)
+       (print (str "Successly sent message from bot " bot-id "!")))
+     (:status resp)))
+  ([token bot-id text picture-url]
+   (let [request (util/build-request "/bots/post" token)
+         body {"text" text, "bot_id" bot-id, "picture_url" picture-url}
+         resp (util/make-request request "POST" body)]
+     (if (= (:status resp) 202)
+       (print (str "Successly sent message from bot " bot-id "!")))
+     (:status resp))))
 
 (defn destroy-bot
   "Destroy the specified bot"
