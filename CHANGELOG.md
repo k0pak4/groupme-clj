@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
+## v1.0.1
+- Adds unit tests for utils.clj functions using stub-http
+- Edits utils.clj functions to properly create urls (no trailing &)
+	
 ## v1.0.0 (not fully backwards compatible)
 - UsageGuide Overhaul
 - Adds API support for the __image service__

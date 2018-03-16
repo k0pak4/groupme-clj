@@ -25,7 +25,6 @@ Feel free to fork the library and submit a pull request, but please follow the b
 
 While the library currently offers full API coverage, there are still areas that need improvement, including:
 - Testing of existing API functionality including:
-  - utils.clj functions
   - groups.clj functions
   - users.clj functions
   - chats.clj functions
