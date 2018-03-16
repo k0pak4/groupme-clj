@@ -3,17 +3,19 @@
             [clojure.data.json :as json]))
 
 (def base-url "https://api.groupme.com/v3")
+(def image-url "https://image.groupme.com/pictures")
 
 (defn build-request
   "builds a request with the given token and more parameters"
   [target token & more]
-  (let [params (apply concat (interpose ["&"] (partition 2 more)))]
-  (str base-url target "?token=" token "&" (apply str params))))
+  (let [params (apply str (flatten (interpose "&" (partition 2 more))))
+        params (if (= "" params) params (str "&" params))]
+  (str base-url target "?token=" token params)))
 
 (defn make-image-request
   "sends an image to GroupMe image service"
   [token image content-type]
-  (-> (client/post "https://image.groupme.com/pictures"
+  (-> (client/post image-url
                    {:headers {"X-Access-Token" token
                               "Content-Type" content-type}
                     :body (clojure.java.io/file image)})
